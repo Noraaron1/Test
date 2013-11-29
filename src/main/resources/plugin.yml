@@ -1,0 +1,269 @@
+name: Prism
+main: me.botsko.prism.Prism
+version: ${describe}
+softdepend: [WorldEdit,HeroChat]
+author: viveleroi
+website: http://discover-prism.com
+commands:
+whomadethis:
+        description: Activates the Libelula Logger discovery tool.
+        permission: libelulalogger.whomadethis
+        usage: /whomadethis
+        permission-message: You don't have <permission>
+    blockrestore:
+        description: Activates the block restore tools.
+        permission: libelulalogger.blockrestore
+        usage: /blockrestore
+        permission-message: You don't have <permission>
+    libelulalogger:
+        description: Libelula Logger Configuration commands.
+        permission: libelulalogger.libelulalogger
+        usage: /libelulalogger <config <set [key value]> <del [key]> <reload>> <update>
+        permission-message: You don't have <permission>
+        aliases: ll
+    /whoeditedthisarea:
+        description: Query LibelulaLogger about area modifications.
+        permission: libelulalogger.whoeditedinthisarea
+        usage: //whoeditedinthisarea
+        permission-message: You don't have <permission>
+    whoeditedthisarea:
+        description: Query LibelulaLogger about area modifications.
+        permission: libelulalogger.whoeditedinthisarea
+        usage: /whoeditedinthisarea [radius]
+        permission-message: You don't have <permission>
+    /undoedited:
+        description: LibelulaLogger Undo area modifications.
+        permission: libelulalogger.undoedited
+        usage: //undoedited [player name]
+        permission-message: You don't have <permission>
+    undoedited:
+        description: LibelulaLogger Undo area modifications.
+        permission: libelulalogger.undoedited
+        usage: /undoedited [player name] [radius]
+        permission-message: You don't have <permission>
+    /redoedited:
+        description: LibelulaLogger Redo area modifications.
+        permission: libelulalogger.redoedited
+        usage: //redoedited [player name]
+        permission-message: You don't have <permission>
+    redoedited:
+        description: LibelulaLogger Redo area modifications.
+        permission: libelulalogger.redoedited
+        usage: /redoedited [player name] [radius]
+        permission-message: You don't have <permission>
+
+   prism:
+      description: Base command for everything Prism
+      usage: /prism ?
+      aliases: [pr]
+   what:
+      description: Identifies the held item according to the prism profiling system
+      usage: /what
+      aliases: [wtfisthis]
+permissions:
+    prism.help:
+        default: op
+    prism.wand.*:
+        default: op
+        children:
+            prism.wand.inspect: true
+            prism.wand.profile: true
+            prism.wand.rollback: true
+            prism.wand.restore: true
+    prism.setmy.wand:
+        default: op
+    prism.lookup:
+        default: op
+    prism.lookup.paginate:
+        default: true
+    prism.extinguish:
+        default: op
+    prism.drain:
+        default: op
+    prism.preview:
+        default: op
+    prism.rollback:
+        default: op
+    prism.restore:
+        default: op
+    prism.tp:
+        default: op
+    prism.report:
+        default: op
+    prism.reload:
+        default: op
+    prism.delete:
+        default: op
+    prism.alerts:
+        default: op
+    prism.bypass-use-alerts:
+        default: false
+    prism.alerts.ores.ignore:
+        default: false
+    prism.alerts.use.place.ignore:
+        default: false
+    prism.alerts.use.break.ignore:
+        default: false
+    prism.alerts.use.lighter.ignore:
+        default: false
+    prism.alerts.use.lavabucket.ignore:
+        default: false
+    prism.alerts.ignore:
+        default: false
+    prism.override-max-lookup-radius:
+        default: false
+    prism.override-max-applier-radius:
+        default: false
+    prism.ignore.tracking.block-break:
+        default: false
+    prism.ignore.tracking.block-burn:
+        default: false
+    prism.ignore.tracking.block-fade:
+        default: false
+    prism.ignore.tracking.block-fall:
+        default: false
+    prism.ignore.tracking.block-form:
+        default: false
+    prism.ignore.tracking.block-place:
+        default: false
+    prism.ignore.tracking.block-shift:
+        default: false
+    prism.ignore.tracking.block-spread:
+        default: false
+    prism.ignore.tracking.block-use:
+        default: false
+    prism.ignore.tracking.bucket-fill:
+        default: false
+    prism.ignore.tracking.bonemeal-use:
+        default: false
+    prism.ignore.tracking.container-access:
+        default: false
+    prism.ignore.tracking.cake-eat:
+        default: false
+    prism.ignore.tracking.craft-item:
+        default: false
+    prism.ignore.tracking.creeper-explode:
+        default: false
+    prism.ignore.tracking.crop-trample:
+        default: false
+    prism.ignore.tracking.dragon-eat:
+        default: false
+    prism.ignore.tracking.enchant-item:
+        default: false
+    prism.ignore.tracking.enderman-pickup:
+        default: false
+    prism.ignore.tracking.enderman-place:
+        default: false
+    prism.ignore.tracking.entity-dye:
+        default: false
+    prism.ignore.tracking.entity-explode:
+        default: false
+    prism.ignore.tracking.entity-follow:
+        default: false
+    prism.ignore.tracking.entity-form:
+        default: false
+    prism.ignore.tracking.entity-kill:
+        default: false
+    prism.ignore.tracking.entity-leash:
+        default: false
+    prism.ignore.tracking.entity-shear:
+        default: false
+    prism.ignore.tracking.entity-spawn:
+        default: false
+    prism.ignore.tracking.entity-unleash:
+        default: false
+    prism.ignore.tracking.fireball:
+        default: false
+    prism.ignore.tracking.fire-spread:
+        default: false
+    prism.ignore.tracking.firework-launch:
+        default: false
+    prism.ignore.tracking.hangingitem-break:
+        default: false
+    prism.ignore.tracking.hangingitem-place:
+        default: false
+    prism.ignore.tracking.item-drop:
+        default: false
+    prism.ignore.tracking.item-insert:
+        default: false
+    prism.ignore.tracking.item-pickup:
+        default: false
+    prism.ignore.tracking.item-remove:
+        default: false
+    prism.ignore.tracking.lava-break:
+        default: false
+    prism.ignore.tracking.lava-bucket:
+        default: false
+    prism.ignore.tracking.lava-flow:
+        default: false
+    prism.ignore.tracking.lava-ignite:
+        default: false
+    prism.ignore.tracking.leaf-decay:
+        default: false
+    prism.ignore.tracking.lighter:
+        default: false
+    prism.ignore.tracking.lightning:
+        default: false
+    prism.ignore.tracking.mushroom-grow:
+        default: false
+    prism.ignore.tracking.player-chat:
+        default: false
+    prism.ignore.tracking.player-command:
+        default: false
+    prism.ignore.tracking.player-death:
+        default: false
+    prism.ignore.tracking.player-join:
+        default: false
+    prism.ignore.tracking.player-kill:
+        default: false
+    prism.ignore.tracking.player-quit:
+        default: false
+    prism.ignore.tracking.player-teleport:
+        default: false
+    prism.ignore.tracking.potion-splash:
+        default: false
+    prism.ignore.tracking.sheep-eat:
+        default: false
+    prism.ignore.tracking.sign-change:
+        default: false
+    prism.ignore.tracking.spawnegg-use:
+        default: false
+    prism.ignore.tracking.tnt-explode:
+        default: false
+    prism.ignore.tracking.tnt-prime:
+        default: false
+    prism.ignore.tracking.tree-grow:
+        default: false
+    prism.ignore.tracking.vehicle-break:
+        default: false
+    prism.ignore.tracking.vehicle-enter:
+        default: false
+    prism.ignore.tracking.vehicle-exit:
+        default: false
+    prism.ignore.tracking.vehicle-place:
+        default: false
+    prism.ignore.tracking.water-break:
+        default: false
+    prism.ignore.tracking.water-bucket:
+        default: false
+    prism.ignore.tracking.water-flow:
+        default: false
+    prism.ignore.tracking.world-edit:
+        default: false
+    prism.ignore.tracking.xp-pickup:
+        default: false
+libelulalogger.*:
+     description: Gives access to all Libelula Logger commands
+     children:
+         libelulalogger.whomadethis: true
+         libelulalogger.blockrestore: true
+         libelulalogger.libelulalogger: true
+         libelulalogger.whoeditedthisarea: true
+         libelulalogger.undoedited: true
+         libelulalogger.redoedited: true
+   libelulalogger.queries:
+     description: Gives access to all Libelula Logger query commands.
+     children:
+         libelulalogger.whomadethis: true
+         libelulalogger.whoeditedthisarea: true
+         
